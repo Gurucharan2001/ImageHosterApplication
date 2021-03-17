@@ -43,4 +43,7 @@ public class ImageService {
         imageRepository.hostImage(newImage);
     }
 
+    public void deleteImage(Integer imageId) {
+        imageRepository.deleteImage(imageId);
+    }
 }

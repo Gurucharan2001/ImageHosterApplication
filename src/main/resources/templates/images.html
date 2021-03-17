@@ -8,17 +8,17 @@
 
 <body>
 <h1>Welcome User. These are your Images</h1>
-<main id="posts">
-    <post th:each="p : ${posts}">
-        <h2 th:text="${p.title}"></h2>
-        <i>Posted On: </i> <span th:text="${p.date}"></span>
+<main id="images">
+    <post th:each="i : ${images}">
+        <h2 th:text="${i.title}"></h2>
+        <i>Posted On: </i> <span th:text="${i.date}"></span>
         <div>
-            <p th:text="${p.body}"></p>
+            <p th:text="${i.body}"></p>
         </div>
         <div>
-            <a th:href="@{/editpost(postId=${p.id})}">EDIT</a>
+<!--            <a th:href="@{/editpost(postId=${p.id})}">EDIT</a>-->
 
-            <form th:action="@{/deletepost(postId=${p.id})}" th:method="delete">
+            <form th:action="@{/deleteimage(imageId=${i.id})}" th:method="delete">
                 <input type="submit" value="DELETE" />
             </form>
         </div>

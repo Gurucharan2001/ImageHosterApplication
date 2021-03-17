@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.Date;
@@ -32,12 +33,18 @@ public class ImageController {
         return "/image/hostimage";
     }
 
-    @RequestMapping(method = RequestMethod.POST,value = "/images/create")
+    @RequestMapping(method = RequestMethod.POST,value = "/images/hostnewimage")
     public String hostNewImage(Image newImage,HttpSession session){
         User user = (User) session.getAttribute("LoggedUser");
         newImage.setUser(user);
         newImage.setDate(new Date());
         imageService.hostImage(newImage);
+        return "redirect:/images";
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE,value = "/deleteimage")
+    public String deleteImage(@RequestParam(name = "imageId") Integer imageId){
+        imageService.deleteImage(imageId);
         return "redirect:/images";
     }
 }

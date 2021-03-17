@@ -35,4 +35,18 @@ public class ImageRepository {
     }
 
 
+    public void deleteImage(Integer imageId) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        try{
+            transaction.begin();
+            Image image = entityManager.find(Image.class,imageId);
+            entityManager.remove(image);
+            transaction.commit();
+        }
+        catch (Exception e){
+            System.out.println(e);
+            transaction.rollback();
+        }
+    }
 }
