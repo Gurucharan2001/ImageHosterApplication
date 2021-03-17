@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head th:fragment="site-head"></head>
+
+<body>
+<header th:fragment="logged-out" th:remove="tag">
+    <header>
+        <a href="users/login.html" th:href="@{/users/login}">Login</a>
+        <a href="users/sugnup.html" th:href="@{/users/signup}">Signup</a>
+    </header>
+</header>
+
+<header th:fragment="logged-in" th:remove="tag">
+    <header>
+        <a href="image/hostimage.html" th:href="@{/images/hostnewimage}">Host Image</a>
+        <form method="post" th:action="@{/users/logout}">
+            <input type="submit" value="Logout" />
+        </form>
+    </header>
+</header>
+</body>
+
+</html>
